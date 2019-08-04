@@ -111,7 +111,8 @@ y = [1, 6, 12, 8, 6, 21, 10]
 
 print("Hệ số tương quan tuyến tính giữa hai biến x, y: ", find_corr_x_y(x, y))
 
-# dùng hệ số tương quan để tính độ giống nhau giữa 2 ảnh
+# Dựa trên công thức tính hệ số tương quan chứng minh
+# p(x, y) = p(x, y * a + b)
 
 a = 2
 b = 6
@@ -125,3 +126,25 @@ corr_x_z = find_corr_x_y(x, z)
 print("corr_x_y = ", corr_x_y)
 print("corr_x_z = ", corr_x_z)
 
+# Tính hệ số tương quan giữa hai ảnh
+
+import numpy as np
+from PIL import Image
+
+image1 = Image.open("Images/img1.png")
+image2 = Image.open("Images/img2.png")
+image3 = Image.open("Images/img3.png")
+image4 = Image.open("Images/img4.png")
+
+image1_list = np.asarray(image1).flatten().tolist()
+image2_list = np.asarray(image2).flatten().tolist()
+image3_list = np.asarray(image3).flatten().tolist()
+image4_list = np.asarray(image4).flatten().tolist()
+
+corr_1_2 = find_corr_x_y(image1_list, image2_list)
+corr_1_3 = find_corr_x_y(image1_list, image3_list)
+corr_1_4 = find_corr_x_y(image1_list, image4_list)
+
+print("corr_1_2: ", corr_1_2)
+print("corr_1_3: ", corr_1_3)
+print("corr_1_4: ", corr_1_4)
